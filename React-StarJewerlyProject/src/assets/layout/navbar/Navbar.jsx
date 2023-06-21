@@ -1,4 +1,5 @@
 import CartWidget from "../../../common/cartWidget/CartWidget";
+import CustomizedBadges from "../../../common/cartWidget2/CartWidget2";
 
 const Navbar = () => {
   return (
@@ -10,6 +11,7 @@ const Navbar = () => {
         <li>Contacto</li>
       </ul>
       <CartWidget />
+      <CustomizedBadges />
     </div>
   );
 };

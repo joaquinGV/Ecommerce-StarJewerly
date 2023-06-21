@@ -3,7 +3,7 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 const CartWidget = () => {
   return (
     <div>
-      <BsFillCartCheckFill color="black" size={30} />
+      <BsFillCartCheckFill color="blue" size={30} title="Carrito Incompleto" />
     </div>
   );
 };
