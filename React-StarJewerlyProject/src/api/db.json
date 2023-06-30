@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Lámpara de Luna de Levitación Magnética",
+      "price": 700,
+      "stock": 8,
+      "description": "Lámpara de Luna de Levitación Magnética Luces de Luna LED Varios Modos de Colores Luz de Noche de Luna Flotante Luz de Noche Lunar 3D para el Hogar Dormitorio Decoración de Oficina",
+      "category": "Luces",
+      "img": "https://res.cloudinary.com/dobejqlcu/image/upload/v1688158665/Mooncy/magnetic_moon.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Lámpara Pluton",
+      "price": 500,
+      "stock": 10,
+      "description": "Lámpara de Pluton colgante",
+      "category": "Luces",
+      "img": "https://res.cloudinary.com/dobejqlcu/image/upload/v1688158665/Mooncy/magnetic_moon.jpg"
+    },
+    {
+      "title": "Nuevo Titulo",
+      "price": 200,
+      "id": 3
+    },
+    {
+      "title": "Lámpara Pluton",
+      "price": 500,
+      "stock": 10,
+      "description": "Lámpara de Pluton colgante",
+      "category": "Luces",
+      "img": "https://res.cloudinary.com/dobejqlcu/image/upload/v1688158665/Mooncy/magnetic_moon.jpg",
+      "id": 4
+    }
+  ]
+}
