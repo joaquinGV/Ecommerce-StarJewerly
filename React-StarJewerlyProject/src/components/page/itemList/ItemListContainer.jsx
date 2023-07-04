@@ -7,8 +7,8 @@ import useFetch from "../../../utils/hooks/useFetch";
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const [error, setError] = useState({});
-  const { data } = useFetch("http://localhost:5000/products");
-  const [mooncy,setMooncy] = useState([])
+  const { data } = useFetch("/src/api/db2.json");
+  const [mooncy, setMooncy] = useState([]);
 
   useEffect(() => {
     const tarea = new Promise((resolve, reject) => {
@@ -20,13 +20,10 @@ const ItemListContainer = () => {
       .catch((error) => setError(error));
   }, []);
 
-    useEffect(()=>{
-        const dataFetch = fetch("/src/api/db.json")
-        dataFetch.then(res => res.json()).then(res => setMooncy(res))
-    }, [])
-
-
-  console.log(data);
+  useEffect(() => {
+    const dataFetch = fetch("/src/api/db2.json");
+    dataFetch.then((res) => res.json()).then((res) => setMooncy(res));
+  }, []);
 
   return <ItemList items={data} />;
 };
