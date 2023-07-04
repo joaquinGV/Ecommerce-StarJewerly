@@ -6,8 +6,9 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import Counter from "../counter/Counter";
 
-const ProductCard = ({ elemento, isInItemList=true }) => {
+const ProductCard = ({ elemento, isInItemList = true }) => {
   return (
     <Card sx={{ width: 345 }}>
       <CardMedia
@@ -31,6 +32,7 @@ const ProductCard = ({ elemento, isInItemList=true }) => {
           <Button size="small">Eliminar del carrito</Button>
         )}
       </CardActions>
+      <Counter stock={elemento.stock} onAdd={1} />
     </Card>
   );
 };

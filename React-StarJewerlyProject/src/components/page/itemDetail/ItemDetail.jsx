@@ -20,7 +20,7 @@ const ItemDetail = () => {
       <h2>{producto.nombre}</h2>
       <h4>{producto.precio}</h4>
 
-      <CounterContainer stock={producto.stock} onAdd={onAdd} />
+      <CounterContainer stock={producto.stock} onAdd={onAdd}  />
     </div>
   );
 };
