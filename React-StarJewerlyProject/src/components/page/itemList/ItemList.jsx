@@ -1,6 +1,7 @@
 import ProductCard from "../../common/productCard/ProductCard";
+import SelectCategory from "../../common/selectCategory/SelectCategory";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, data }) => {
   console.log("llego al presentacional los items: ", items);
   console.log({ items });
   console.log(items);
@@ -8,6 +9,7 @@ const ItemList = ({ items }) => {
   return (
     <div>
       <h1>Aca van los productos</h1>
+      <SelectCategory data={data} />
 
       <div
         style={{

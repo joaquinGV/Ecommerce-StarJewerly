@@ -4,6 +4,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const MenuNav = ({ theme }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -42,11 +43,23 @@ const MenuNav = ({ theme }) => {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <MenuItem onClick={handleClose}>Inicio</MenuItem>
-        <MenuItem onClick={handleClose}>Decoraciones</MenuItem>
-        <MenuItem onClick={handleClose}>Ofertas</MenuItem>
-        <MenuItem onClick={handleClose}>Habitaciones</MenuItem>
-        <MenuItem onClick={handleClose}>Ayuda</MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Ecommerce-StarJewerly/">Inicio</NavLink>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Ecommerce-StarJewerly/tienda">Tienda</NavLink>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Ecommerce-StarJewerly/ofertas">Ofertas</NavLink>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Ecommerce-StarJewerly/habitaciones">
+            Habitaciones
+          </NavLink>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Ecommerce-StarJewerly/help">Ayuda</NavLink>
+        </MenuItem>
       </Menu>
     </div>
   );

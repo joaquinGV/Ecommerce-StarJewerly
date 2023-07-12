@@ -13,5 +13,3 @@ const useFetch = (endpoint) => {
 }
 
 export default useFetch
-
-"/src/api/db.json"

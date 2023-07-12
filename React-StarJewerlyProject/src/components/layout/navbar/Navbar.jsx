@@ -18,6 +18,7 @@ import CartWidget from "../../common/cartWidget/CartWidget";
 import "./Navbar.css";
 import MenuNav from "../../common/menuNav/MenuNav";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const navTheme = createTheme({
   palette: {
@@ -76,7 +77,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Navbar = ({ children }) => {
+const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -189,7 +190,7 @@ const Navbar = ({ children }) => {
                 component="div"
                 sx={{ display: { xs: "none", sm: "block" } }}
               >
-                MOONCY
+                <Link to="/Ecommerce-StarJewerly/">MOONCY</Link>
               </Typography>
               <Search>
                 <SearchIconWrapper>
@@ -251,7 +252,6 @@ const Navbar = ({ children }) => {
           {renderMenu}
         </Box>
       </ThemeProvider>
-      {children}
     </div>
   );
 };

@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "server":  "json-server --watch src/api/db.json --port 5000",
+    "server": "json-server --watch src/api/db.json --port 5000",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -24,6 +24,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
+    "react-router-dom": "^6.14.1",
     "styled-components": "^5.3.11"
   },
   "devDependencies": {

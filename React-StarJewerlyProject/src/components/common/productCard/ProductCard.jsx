@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import Counter from "../counter/Counter";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ elemento, isInItemList = true }) => {
   return (
@@ -27,7 +28,9 @@ const ProductCard = ({ elemento, isInItemList = true }) => {
       </CardContent>
       <CardActions>
         {isInItemList ? (
-          <Button size="small">Ver detalle</Button>
+          <Link to={`/Ecommerce-StarJewerly/item/${elemento.id}`}>
+            <Button size="small">Ver detalle</Button>
+          </Link>
         ) : (
           <Button size="small">Eliminar del carrito</Button>
         )}

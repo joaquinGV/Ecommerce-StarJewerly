@@ -3,29 +3,25 @@ import { useState, useEffect } from "react";
 import { products } from "../../../productsMock";
 import ItemList from "./ItemList";
 import useFetch from "../../../utils/hooks/useFetch";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const [error, setError] = useState({});
   const { data } = useFetch("/src/api/db2.json");
-  const [mooncy, setMooncy] = useState([]);
+  const { categoryName } = useParams();
 
   useEffect(() => {
-    const tarea = new Promise((resolve, reject) => {
-      resolve("/src/api/db.json");
+    let productosFiltrados = data.filter(
+      (elemento) => elemento.category === categoryName
+    );
+    const tarea = new Promise((resolve, rej) => {
+      resolve(categoryName === undefined ? data : productosFiltrados);
     });
+    tarea.then((res) => setItems(res)).catch((err) => setError(err));
+  }, [categoryName]);
 
-    tarea
-      .then((respuesta) => setItems(respuesta))
-      .catch((error) => setError(error));
-  }, []);
-
-  useEffect(() => {
-    const dataFetch = fetch("/src/api/db2.json");
-    dataFetch.then((res) => res.json()).then((res) => setMooncy(res));
-  }, []);
-
-  return <ItemList items={data} />;
+  return <ItemList items={categoryName ? items : data} data={data} />;
 };
 
 export default ItemListContainer;
