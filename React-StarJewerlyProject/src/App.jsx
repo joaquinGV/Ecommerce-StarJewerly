@@ -19,13 +19,3 @@ function App() {
 }
 
 export default App;
-
-<div>
-  <Navbar>
-    <ItemListContainer />
-    <Counter stock={10} onAdd={1} />
-    <CounterContainer stock={5} onAdd={1} />
-    <FetchingData />
-    <FetchingDB />
-  </Navbar>
-</div>;

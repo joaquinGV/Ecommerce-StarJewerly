@@ -1,3 +1,4 @@
+import CartContainer from "../components/page/cart/CartContainer";
 import cart from "../components/page/cart/cart";
 import FormularioFormik from "../components/page/formularioFormik/FormularioFormik";
 import home from "../components/page/home/home";
@@ -33,13 +34,13 @@ export const routes = [
   },
   {
     id: "details",
-    path: "/Ecommerce-StarJewerly/item/:Itemid",
+    path: "/Ecommerce-StarJewerly/item/:id",
     Element: ItemDetail,
   },
   {
     id: "cart",
     path: "/Ecommerce-StarJewerly/cart",
-    Element: cart,
+    Element: CartContainer,
   },
   {
     id: "checkout",

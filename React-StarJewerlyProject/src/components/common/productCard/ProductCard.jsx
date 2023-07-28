@@ -35,7 +35,6 @@ const ProductCard = ({ elemento, isInItemList = true }) => {
           <Button size="small">Eliminar del carrito</Button>
         )}
       </CardActions>
-      <Counter stock={elemento.stock} onAdd={1} />
     </Card>
   );
 };

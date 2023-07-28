@@ -6,8 +6,8 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Outlet } from "react-router-dom";
 
-const Counter = ({ stock, onAdd }) => {
-  const { contador, sumar, restar, reset } = useCounter(1, stock);
+const Counter = ({ contador, sumar, restar, reset, onAdd }) => {
+  // const { contador, sumar, restar, reset } = useCounter(1, stock);
 
   return (
     <>
@@ -39,26 +39,16 @@ const Counter = ({ stock, onAdd }) => {
           <Button onClick={sumar}>
             <AddIcon />
           </Button>
-          {/* <Button disabled>{contador}</Button> */}
           <Button onClick={restar}>
             <RemoveIcon />
           </Button>
           <Button onClick={reset}>
             <RestartAltIcon />
           </Button>
-          <Button
-            onClick={() => {
-              onAdd;
-            }}
-          >
+          <Button onClick={() => onAdd(contador)}>
             <AddShoppingCartIcon />
           </Button>
         </ButtonGroup>
-        {/* <button onClick={sumar}>sumar</button>
-      <h3>{contador}</h3>
-      <button onClick={restar}>restar</button>
-
-      <button onClick={() => onAdd(contador)}>Agregar al carrito</button> */}
       </Stack>
     </>
   );
