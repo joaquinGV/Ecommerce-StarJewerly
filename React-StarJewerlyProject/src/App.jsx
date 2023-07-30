@@ -1,9 +1,3 @@
-import CounterContainer from "./components/common/counter/CounterContainer";
-import Navbar from "./components/layout/navbar/Navbar";
-import ItemListContainer from "./components/page/itemList/ItemListContainer";
-import FetchingData from "./components/page/fetchingData/FetchingData";
-import FetchingDB from "./components/page/ferchingDB/FetchingDB";
-import Counter from "./components/common/counter/Counter";
 import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./routes/AppRoutes";
 import CartContextComponent from "./context/cartContext";

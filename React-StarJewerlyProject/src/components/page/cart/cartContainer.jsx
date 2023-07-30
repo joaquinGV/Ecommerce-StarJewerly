@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { CartContext } from "../../../context/CartContext";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../../context/cartContext";
 
 const CartContainer = () => {
   const { cart, clearCart, deleteById, getTotalPrice } =
@@ -44,7 +44,7 @@ const CartContainer = () => {
       {cart.length > 0 && <button onClick={limpiar}>Limpiar carrito</button>}
 
       <h2>El total es: {total}</h2>
-      <Link to="/checkout" >Finalizar compra</Link>
+      <Link to="/Ecommerce-StarJewerly/checkout">Finalizar compra</Link>
     </div>
   );
 };
