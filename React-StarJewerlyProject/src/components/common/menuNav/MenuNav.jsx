@@ -7,6 +7,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const MenuNav = ({ theme }) => {
+  const userRol = "user";
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -60,6 +61,11 @@ const MenuNav = ({ theme }) => {
         <MenuItem onClick={handleClose}>
           <NavLink to="/Ecommerce-StarJewerly/help">Ayuda</NavLink>
         </MenuItem>
+        {userRol === "admin" && (
+          <MenuItem onClick={handleClose}>
+            <NavLink to="/Ecommerce-StarJewerly/dashboard">Dashboard</NavLink>
+          </MenuItem>
+        )}
       </Menu>
     </div>
   );

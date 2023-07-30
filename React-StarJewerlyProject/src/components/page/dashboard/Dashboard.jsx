@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import { database } from "../../../../firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 import useFetch from "../../../utils/hooks/useFetch";
+import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   const { data } = useFetch("/src/api/db2.json");
@@ -18,6 +19,7 @@ const Dashboard = () => {
         {"true"}
         Rellenar componentes
       </Button>
+      <Outlet />
     </div>
   );
 };

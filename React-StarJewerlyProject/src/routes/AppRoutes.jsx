@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 
 import { routes } from "./routes";
+import Dashboard from "../components/page/dashboard/Dashboard";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 const AppRouter = () => {
   return (
@@ -14,8 +16,11 @@ const AppRouter = () => {
       </Route>
 
       {/* Rutas privadas */}
-      <Route element={<ProtectedRoutes/>}>
-        <Route></Route>
+      <Route element={<ProtectedRoutes />}>
+        <Route
+          path="/Ecommerce-StarJewerly/dashboard"
+          element={<Dashboard />}
+        />
       </Route>
 
       <Route path="*" element={<h1>404 not found</h1>} />
