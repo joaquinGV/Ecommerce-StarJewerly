@@ -1,4 +1,4 @@
-import CartContainer from "../components/page/cart/CartContainer.jsx";
+import CartContainer from "../components/page/cart/CartContainer";
 import FormularioFormik from "../components/page/formularioFormik/FormularioFormik";
 import home from "../components/page/home/home";
 import ItemDetail from "../components/page/itemDetail/ItemDetail";
