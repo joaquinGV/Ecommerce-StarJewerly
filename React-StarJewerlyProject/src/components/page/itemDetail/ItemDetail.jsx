@@ -7,8 +7,8 @@ import { useParams } from "react-router-dom";
 import "./itemDetail.css";
 import { database } from "../../../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
-import { CartContext } from "../../../context/cartContext";
 import CounterContainer from "../../common/counter/CounterContainer";
+import { CartContext } from "../../../context/CartContext";
 
 const ItemDetail = () => {
   const { addToCart, getQuantityById } = useContext(CartContext);

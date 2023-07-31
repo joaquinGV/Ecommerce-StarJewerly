@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../../context/cartContext";
+import { CartContext } from "../../../context/CartContext";
 
 const CartContainer = () => {
   const { cart, clearCart, deleteById, getTotalPrice } =
