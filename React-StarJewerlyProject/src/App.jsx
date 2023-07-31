@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./routes/AppRoutes";
-import CartContextComponent from "./context/cartContext";
+import CartContextComponent from "./context/CartContext";
 
 function App() {
   return (
