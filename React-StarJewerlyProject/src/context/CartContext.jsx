@@ -9,7 +9,6 @@ const CartContextComponent = ({ children }) => {
     const existe = isInCart(item.id);
 
     if (existe) {
-      console.log("Viejo item");
       let newArray = cart.map((elemento) => {
         // [{1}, {}, {3}]
         if (elemento.id === item.id) {
@@ -21,7 +20,6 @@ const CartContextComponent = ({ children }) => {
 
       setCart(newArray);
     } else {
-      console.log("Nuevo item");
       setCart([...cart, item]);
     }
   };

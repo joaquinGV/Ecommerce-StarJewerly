@@ -17,8 +17,6 @@ const FetchingDB = () => {
     data.then((res) => setProductSelected(res.data));
   }, []);
 
-  console.log(products);
-  console.log(productSelected);
 
   //  CREATE --- POST
 

@@ -18,7 +18,6 @@ const ItemDetail = () => {
   const [producto, setProducto] = useState({});
 
   const totalQuantity = getQuantityById(id);
-  // console.log(totalQuantity);
 
   useEffect(() => {
     let productsCollection = collection(database, "products");
@@ -30,11 +29,9 @@ const ItemDetail = () => {
 
   const onAdd = (cantidad) => {
     let productCart = { ...producto, quantity: cantidad };
-    console.log("Añadir al carrito");
     addToCart(productCart);
   };
 
-  console.log("Producto es:", producto);
   // if (producto) {
   return (
     <div className="containerItems">

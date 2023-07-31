@@ -32,14 +32,13 @@ const FormularioFormik = () => {
         total,
         date: serverTimestamp(),
       };
-      console.log(order);
 
       // Crear orden en firebase
 
       const ordersCollection = collection(database, "orders");
       addDoc(ordersCollection, order)
         .then((res) => setOrderId(res.id))
-        .catch((err) => console.log("Error adding doc:", err));
+        // .catch((err) => console.log("Error adding doc:", err));
 
       // Crear cambio de stock en Firebase
       cart.forEach((element) => {
@@ -70,7 +69,6 @@ const FormularioFormik = () => {
     validateOnBlur: true,
   });
 
-  console.log(errors);
 
   return (
     <div style={{ padding: "40px" }}>
@@ -78,7 +76,7 @@ const FormularioFormik = () => {
         <div>
           <h3>Gracias por su compra</h3>
           <h4>Su numero de compra es: {orderId}</h4>
-          <Link to="Ecommerce-StarJewerly/tienda"> Volver al menu</Link>
+          <Link to="/Ecommerce-StarJewerly/tienda"> Volver al menu</Link>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>

@@ -17,7 +17,7 @@ export default function SelectCategory({ data }) {
   //   const { data } = useFetch("/src/api/db2.json");
   const categorias = Array.from(new Set(data.map((obj) => obj.category)));
 
-  console.log("Categorias unicas:", categorias);
+  // console.log("Categorias unicas:", categorias);
 
   return (
     <div>
