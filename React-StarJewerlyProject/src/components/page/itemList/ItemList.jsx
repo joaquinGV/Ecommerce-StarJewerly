@@ -6,7 +6,7 @@ const ItemList = ({ items }) => {
   console.log("llego al presentacional los items: ", items);
   console.log({ items });
   console.log(items);
-  let arr = [1, 2];
+  let arr = [1, 2, 3, 4];
 
   return (
     <div>
