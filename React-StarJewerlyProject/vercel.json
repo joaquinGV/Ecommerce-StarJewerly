@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/Ecommerce-StarJewerly/(.*)",
+      "destination": "/Ecommerce-StarJewerly/"
+    }
+  ]
+}
