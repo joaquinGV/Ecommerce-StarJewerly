@@ -26,3 +26,9 @@
     border-radius: 10px;
   }
   
+  .link {
+    text-decoration: none; /* remove underline */
+    color: inherit; /* inherit the color of the parent */
+    font-size: 120%;
+  }
+  

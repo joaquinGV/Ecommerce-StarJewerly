@@ -1,24 +1,19 @@
 import React from "react";
 import { IconButton, Menu, MenuItem, Fade } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const MenuNav = ({ theme }) => {
   const userRol = "user";
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = (url) => {
+  const handleClose = () => {
     setAnchorEl(null);
-
-    if (url) {
-      navigate(`/Ecommerce-StarJewerly/${url}`);
-    }
   };
 
   return (
@@ -45,19 +40,39 @@ const MenuNav = ({ theme }) => {
         }}
         anchorEl={anchorEl}
         open={open}
-        onClose={() => handleClose(null)}
+        onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <MenuItem onClick={() => handleClose("")}>Inicio</MenuItem>
-        <MenuItem onClick={() => handleClose("tienda")}>Tienda</MenuItem>
-        <MenuItem onClick={() => handleClose("ofertas")}>Ofertas</MenuItem>
-        <MenuItem onClick={() => handleClose("habitaciones")}>
-          Habitaciones
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Ecommerce-StarJewerly/" className="menu-link">
+            Inicio
+          </NavLink>
         </MenuItem>
-        <MenuItem onClick={() => handleClose("help")}>Ayuda</MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Ecommerce-StarJewerly/tienda" className="menu-link">
+            Tienda
+          </NavLink>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Ecommerce-StarJewerly/ofertas" className="menu-link">
+            Ofertas
+          </NavLink>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Ecommerce-StarJewerly/habitaciones" className="menu-link">
+            Habitaciones
+          </NavLink>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Ecommerce-StarJewerly/help" className="menu-link">
+            Ayuda
+          </NavLink>
+        </MenuItem>
         {userRol === "admin" && (
-          <MenuItem onClick={() => handleClose("dashboard")}>
-            Dashboard
+          <MenuItem onClick={handleClose}>
+            <NavLink to="/Ecommerce-StarJewerly/dashboard" className="menu-link">
+              Dashboard
+            </NavLink>
           </MenuItem>
         )}
       </Menu>

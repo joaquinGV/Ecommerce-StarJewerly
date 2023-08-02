@@ -1,23 +1,39 @@
-// import * as React from "react";
+import { useEffect, useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Link } from "react-router-dom";
-// import useFetch from "../../../utils/hooks/useFetch";
-import { useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { database } from "../../../../firebaseConfig";
+import { useNavigate } from "react-router-dom";
+import "./selectCategory.css";
 
-export default function SelectCategory({ data }) {
-  const [category, setCategory] = useState("");
-  // const [difCategory, setDifCategory] = useState([]);
+export default function SelectCategory() {
+  const [category, setCategory] = useState([]);
+  const [difCategory, setDifCategory] = useState("");
+  const navigate = useNavigate();
 
-  const handleChange = (event) => {
-    setCategory(event.target.value);
+  useEffect(() => {
+    let productsCollection = collection(database, "products");
+    getDocs(productsCollection).then((res) => {
+      let categoria = res.docs.map((doc) => {
+        return { ...doc.data() };
+      });
+      let cat = Array.from(new Set(categoria.map((obj) => obj.category)));
+      // console.log("cat: ", cat);
+      setCategory(cat);
+    });
+  }, []);
+
+  const handleCategoryChange = (event) => {
+    const selectedCategory = event.target.value;
+    setDifCategory(selectedCategory);
+    if (selectedCategory === "") {
+      navigate("/Ecommerce-StarJewerly/tienda");
+    } else {
+      navigate(`/Ecommerce-StarJewerly/category/${selectedCategory}`);
+    }
   };
-  //   const { data } = useFetch("/src/api/db2.json");
-  const categorias = Array.from(new Set(data.map((obj) => obj.category)));
-
-  // console.log("Categorias unicas:", categorias);
 
   return (
     <div>
@@ -28,22 +44,20 @@ export default function SelectCategory({ data }) {
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
-          value={category}
-          onChange={handleChange}
+          value={difCategory}
+          onChange={handleCategoryChange}
           autoWidth
           label="Category"
         >
-          {categorias.map((cat) => {
+          {category.map((cat) => {
             return (
-              <Link key={cat.id} to={`/Ecommerce-StarJewerly/category/${cat}`}>
-                <MenuItem value={cat}>{cat}</MenuItem>
-              </Link>
+              <MenuItem key={cat} value={cat}>
+                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </MenuItem>
             );
           })}
           <MenuItem value="">
-            <Link to="/Ecommerce-StarJewerly/tienda">
-              <em>None</em>
-            </Link>
+            <em>None</em>
           </MenuItem>
         </Select>
       </FormControl>

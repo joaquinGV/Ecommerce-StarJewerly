@@ -30,7 +30,7 @@ const navTheme = createTheme({
     },
     secondary: {
       light: "#ff7961",
-      main: "#f44336",
+      main: "#ff7961",
       dark: "#ba000d",
       contrastText: "#000",
     },
@@ -48,7 +48,7 @@ const Search = styled("div")(({ theme }) => ({
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
+    marginLeft: theme.spacing(5),
     width: "auto",
   },
 }));
@@ -72,13 +72,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: "20ch",
+      width: "40ch",
     },
   },
 }));
 
-const Navbar = () => {  
-  
+const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -191,7 +190,9 @@ const Navbar = () => {
                 component="div"
                 sx={{ display: { xs: "none", sm: "block" } }}
               >
-                <Link to="/Ecommerce-StarJewerly/">MOONCY</Link>
+                <Link to="/Ecommerce-StarJewerly/" className="link">
+                  MOONCY
+                </Link>
               </Typography>
               <Search>
                 <SearchIconWrapper>
@@ -204,7 +205,7 @@ const Navbar = () => {
               </Search>
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <CartWidget />
+                <CartWidget color="inherit" />
                 <IconButton
                   size="large"
                   aria-label="show new mails"
