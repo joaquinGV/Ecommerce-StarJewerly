@@ -1,0 +1,118 @@
+/* cartContainer.css */
+.cartItem {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .cartItemImage {
+    flex: 0 0 80px;
+    margin-right: 10px;
+    border-radius: 5px;
+    height: 100px;
+    width: 100px;
+  }
+  
+  .cartItemDetails {
+    flex: 1;
+  }
+  
+  .cartItemTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .cartItemPrice {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .cartItemQuantity {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+/* cartContainer.css */
+.cartItemDelete {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    background-color: #f44336;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  .cartItemDelete:hover {
+    background-color: #d32f2f;
+  }
+  
+  .cartButtons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .cartButton {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    margin: 20px 0;
+    margin-right: 10px;
+    padding: 8px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
+  .clearButton {
+    background-color: #f44336;
+    color: #ffffff;
+  }
+  
+  .checkoutButton {
+    text-decoration: none; /* remove underline */
+    background-color: #3f50b5;
+    color: #fff;
+  }
+  
+  .cartTotal {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .emptyCart {
+    text-align: center;
+    margin: 30px;
+  }
+  
+  .emptyCart h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .emptyCart img {
+    max-width: 300px;
+    height: auto;
+  }
+  
+  
+/* Responsive Styles */
+@media (max-width: 768px) {
+  
+    .cartButtons {
+      flex-direction: column;
+    }
+  
+    .cartButton {
+      margin: 8px 0;
+      height: 110%;
+    }
+  }
