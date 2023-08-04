@@ -1,23 +1,23 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
-import React, { useContext, useEffect, useState } from "react";
-import useFetch from "../../../utils/hooks/useFetch";
-import Counter from "../../common/counter/Counter";
+import { useContext, useEffect, useState } from "react";
+import CounterContainer from "../../common/counter/CounterContainer";
 import { useParams } from "react-router-dom";
-import "./itemDetail.css";
 import { database } from "../../../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
-import CounterContainer from "../../common/counter/CounterContainer";
 import { CartContext } from "../../../context/CartContext";
+import "./itemDetail.css";
+import { Box, Rating } from "@mui/material";
 
 const ItemDetail = () => {
   const { addToCart, getQuantityById } = useContext(CartContext);
-
   const { id } = useParams();
-
   const [producto, setProducto] = useState({});
-
   const totalQuantity = getQuantityById(id);
+
+  //Informacion estatica para star rating
+  const staticRatings = {
+    stars: 4.4,
+    count: 5,
+  };
 
   useEffect(() => {
     let productsCollection = collection(database, "products");
@@ -32,24 +32,52 @@ const ItemDetail = () => {
     addToCart(productCart);
   };
 
-  // if (producto) {
   return (
     <div className="containerItems">
-      <div className="ItemsDisplayed">
-        <h2>{producto.title} </h2>
-        <h4>Precio: ${producto.price} </h4>
-        <h4>Descripcion: {producto.description}</h4>
-        <h4>Categoria: {producto.category}</h4>
-        <img src={`${producto.img}`} width={400} height={400} />
-        <CounterContainer
-          stock={producto.stock}
-          onAdd={onAdd}
-          initial={totalQuantity}
-        />
+      <div className="frameContainer">
+        <div className="imageContainer">
+          <img src={`${producto.img}`} alt={producto.title} />
+        </div>
+        <div className="infoContainer">
+          <h2>{producto.title}</h2>
+          <div className="ratingContainer">
+            <Box
+              sx={{
+                "& > legend": { mt: 2 },
+                marginBottom: "5px"
+              }}
+            >
+              <Rating
+                name="read-only"
+                value={staticRatings.stars}
+                precision={0.1}
+                readOnly
+              />
+              {/* <span className="starRating">{staticRatings.stars} Stars</span> */}
+              <span className="ratingCount">
+                ({staticRatings.count} Ratings)
+              </span>
+            </Box>
+          </div>
+
+          <p>
+            <b>Precio:</b> ${producto.price}
+          </p>
+          <p>
+            <b>Descripcion:</b> {producto.description}
+          </p>
+          <p>
+            <b>Categoria:</b> {producto.category}
+          </p>
+          <CounterContainer
+            stock={producto.stock}
+            onAdd={onAdd}
+            initial={totalQuantity}
+          />
+        </div>
       </div>
     </div>
   );
 };
-// };
 
 export default ItemDetail;

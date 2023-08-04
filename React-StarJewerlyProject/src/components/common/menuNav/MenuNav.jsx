@@ -17,7 +17,7 @@ const MenuNav = ({ theme }) => {
     setAnchorEl(null);
 
     if (url) {
-      navigate(`/Ecommerce-StarJewerly/${url}`);
+      navigate(`/Ecommerce-StarJewerly${url}`);
     }
   };
 
@@ -48,15 +48,15 @@ const MenuNav = ({ theme }) => {
         onClose={() => handleClose(null)}
         TransitionComponent={Fade}
       >
-        <MenuItem onClick={() => handleClose("")}>Inicio</MenuItem>
-        <MenuItem onClick={() => handleClose("tienda")}>Tienda</MenuItem>
-        <MenuItem onClick={() => handleClose("ofertas")}>Ofertas</MenuItem>
-        <MenuItem onClick={() => handleClose("habitaciones")}>
+        <MenuItem onClick={() => handleClose("/")}>Inicio</MenuItem>
+        <MenuItem onClick={() => handleClose("/tienda")}>Tienda</MenuItem>
+        <MenuItem onClick={() => handleClose("/ofertas")}>Ofertas</MenuItem>
+        <MenuItem onClick={() => handleClose("/habitaciones")}>
           Habitaciones
         </MenuItem>
-        <MenuItem onClick={() => handleClose("help")}>Ayuda</MenuItem>
+        <MenuItem onClick={() => handleClose("/help")}>Ayuda</MenuItem>
         {userRol === "admin" && (
-          <MenuItem onClick={() => handleClose("dashboard")}>
+          <MenuItem onClick={() => handleClose("/dashboard")}>
             Dashboard
           </MenuItem>
         )}

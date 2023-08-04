@@ -16,6 +16,8 @@ const ItemList = ({ items }) => {
           display: "flex",
           justifyContent: "space-evenly",
           flexWrap: "wrap",
+          // paddingBottom: "15px",
+          rowGap: "15px",
         }}
       >
         {items.length > 0
@@ -25,19 +27,22 @@ const ItemList = ({ items }) => {
           : arr.map((e) => {
               return (
                 <div key={e}>
-                  <Skeleton variant="rectangular" width={210} height={60} />
-                  {/* <Skeleton variant="circular" width={40} height={40} /> */}
+                  <Skeleton variant="rounded" width={290} height={90} />
                   <Skeleton
                     variant="text"
-                    sx={{ fontSize: "1.3rem" }}
-                    width={100}
+                    sx={{ fontSize: "1.6rem" }}
+                    width={160}
                   />
                   <Skeleton
                     variant="text"
                     sx={{ fontSize: "1rem" }}
-                    width={200}
+                    width={290}
                   />
-                  <Skeleton variant="rounded" width={210} height={60} />
+                  <Skeleton
+                    variant="rounded"
+                    sx={{ fontSize: "1rem", marginTop: "10px" }}
+                    width={80}
+                  />
                 </div>
               );
             })}
