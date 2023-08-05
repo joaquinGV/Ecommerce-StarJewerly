@@ -14,6 +14,7 @@ const ItemListContainer = () => {
 
   const ingresarGoogle = async () => {
     let res = await ingresarConGoogle();
+    console.log(res);
   };
 
   useEffect(() => {

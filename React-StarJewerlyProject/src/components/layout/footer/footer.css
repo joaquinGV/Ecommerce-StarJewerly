@@ -1,0 +1,66 @@
+/* footer.css */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .social,
+  .about,
+  .customer-service,
+  .privacy {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+    font-size: 24px;
+  }
+  
+  .customer-service ul,
+  .about ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .about ul li a,
+  .customer-service ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .privacy p {
+    margin-bottom: 10px;
+  }
+  
+  .privacy-links a {
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .footer {
+    padding: 40px 20px;
+    }
+    .about,
+    .customer-service,
+    .privacy,
+    .social {
+      margin: 10px 5px;
+    }
+  
+    .about ul,
+    .customer-service ul {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+  

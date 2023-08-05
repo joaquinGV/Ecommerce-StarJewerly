@@ -1,9 +1,10 @@
 import CartContainer from "../components/page/cart/CartContainer";
-import FormularioFormik from "../components/page/formularioFormik/FormularioFormik";
+import Register from "../components/page/register/Register";
 import home from "../components/page/home/home";
 import ItemDetail from "../components/page/itemDetail/ItemDetail";
 import ItemListContainer from "../components/page/itemList/ItemListContainer";
 import login from "../components/page/login/login";
+import Profile from "../components/page/profile/Profile";
 
 export const routes = [
   {
@@ -44,11 +45,21 @@ export const routes = [
   {
     id: "checkout",
     path: "/Ecommerce-StarJewerly/checkout",
-    Element: FormularioFormik,
+    Element: Register,
   },
   {
     id: "oferts",
     path: "/Ecommerce-StarJewerly/ofertas",
-    Element: FormularioFormik,
+    Element: Register,
+  },
+  {
+    id: "profile",
+    path: "/Ecommerce-StarJewerly/profile",
+    Element: Profile,
+  },
+  {
+    id: "register",
+    path: "/Ecommerce-StarJewerly/registrarse",
+    Element: Register,
   },
 ];

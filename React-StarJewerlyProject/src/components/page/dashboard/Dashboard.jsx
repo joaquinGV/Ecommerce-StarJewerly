@@ -16,7 +16,6 @@ const Dashboard = () => {
   return (
     <div>
       <Button onClick={rellenar} disabled>
-        {"true"}
         Rellenar componentes
       </Button>
       <Outlet />

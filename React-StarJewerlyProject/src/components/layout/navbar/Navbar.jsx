@@ -1,24 +1,23 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import CartWidget from "../../common/cartWidget/CartWidget";
 import "./Navbar.css";
-import MenuNav from "../../common/menuNav/MenuNav";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import MenuNav from "../../common/navbarComponents/menuNav/MenuNav";
+import CartWidget from "../../common/navbarComponents/cartWidget/CartWidget";
+import SearchSection from "../../common/navbarComponents/searchSection/SearchSection";
+import Logo from "../../common/navbarComponents/logo/Logo";
+import { useNavigate } from "react-router-dom";
 
 const navTheme = createTheme({
   palette: {
@@ -31,51 +30,11 @@ const navTheme = createTheme({
     secondary: {
       light: "#ff7961",
       main: "#ff7961",
-      dark: "#ba000d",
+      dark: "#ff7961",
       contrastText: "#000",
     },
   },
 });
-
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(5),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "40ch",
-    },
-  },
-}));
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -83,6 +42,7 @@ const Navbar = () => {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const navigate = useNavigate();
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -92,9 +52,13 @@ const Navbar = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (url) => {
     setAnchorEl(null);
     handleMobileMenuClose();
+
+    if (typeof url === "string" && url.trim() !== "") {
+      navigate(`/Ecommerce-StarJewerly/${url}`);
+    }
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -118,8 +82,8 @@ const Navbar = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={() => handleMenuClose("profile")}>Profile</MenuItem>
+      <MenuItem onClick={() => handleMenuClose("account")}>My account</MenuItem>
     </Menu>
   );
 
@@ -141,14 +105,18 @@ const Navbar = () => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+        <CartWidget color="inherit" />
+        <p>Carrito</p>
+      </MenuItem>
+      {/* <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
+      </MenuItem> */}
+      {/* <MenuItem>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -159,7 +127,7 @@ const Navbar = () => {
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -183,26 +151,11 @@ const Navbar = () => {
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
             <Toolbar>
+              {/* Componentes principales del navbar */}
               <MenuNav theme={navTheme} />
-              <Typography
-                variant="h6"
-                noWrap
-                component="div"
-                sx={{ display: { xs: "none", sm: "block" } }}
-              >
-                <Link to="/Ecommerce-StarJewerly/" className="link">
-                  MOONCY
-                </Link>
-              </Typography>
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search>
+              <Logo />
+              <SearchSection />
+
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 <CartWidget color="inherit" />
@@ -211,7 +164,7 @@ const Navbar = () => {
                   aria-label="show new mails"
                   color="inherit"
                 >
-                  <Badge badgeContent={4} color="secondary">
+                  <Badge badgeContent={0} color="secondary">
                     <MailIcon />
                   </Badge>
                 </IconButton>
@@ -220,7 +173,7 @@ const Navbar = () => {
                   aria-label="show 17 new notifications"
                   color="inherit"
                 >
-                  <Badge badgeContent={17} color="secondary">
+                  <Badge badgeContent={0} color="secondary">
                     <NotificationsIcon />
                   </Badge>
                 </IconButton>
