@@ -11,15 +11,15 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
-import { UserContext } from "../../../context/UserContext"; // Importa el contexto de usuario
+// import { UserContext } from "../../../context/UserContext"; // Importa el contexto de usuario
 import "./Register.css"; // Importa los estilos
 import { database } from "../../../../firebaseConfig";
-import GoogleIcon from "@mui/icons-material/Google";
+// import GoogleIcon from "@mui/icons-material/Google";
 
 const Register = () => {
   const { cart, getTotalPrice } = useContext(CartContext);
   const [orderId, setOrderId] = useState("");
-  const { loginGoogle } = useContext(UserContext); // Importa la función loginGoogle
+  // const { loginGoogle } = useContext(UserContext); // Importa la función loginGoogle
 
   let total = getTotalPrice();
 
