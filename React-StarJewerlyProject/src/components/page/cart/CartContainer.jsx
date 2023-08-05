@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
-import "./cartContainer.css";
+import "./CartContainer.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const CartContainer = () => {
