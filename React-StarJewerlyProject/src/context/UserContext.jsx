@@ -25,6 +25,7 @@ const UserContextComponent = ({ children }) => {
     exist
       ? console.log("Bienvenido", user)
       : console.log("No se encontro ningun usuario");
+    return user;
   };
 
   const registerUser = () => {
@@ -33,13 +34,14 @@ const UserContextComponent = ({ children }) => {
   };
 
   const getUserData = () => {
-    console.log(user);
+    // console.log(user);
     console.log("email:", user.email);
     console.log("Nombre:", user.displayName);
-    console.log("UUID:", user.uid);
+    // console.log("UUID:", user.uid);
   };
 
   let data = {
+    user,
     loginSession,
     loginGoogle,
     logOutSession,

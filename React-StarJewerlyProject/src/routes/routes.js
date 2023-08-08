@@ -5,6 +5,8 @@ import ItemDetail from "../components/page/itemDetail/ItemDetail";
 import ItemListContainer from "../components/page/itemList/ItemListContainer";
 import login from "../components/page/login/login";
 import Profile from "../components/page/profile/Profile";
+import Checkout from "../components/page/checkout/Checkout";
+import CheckLoginContainer from "../components/page/checkLogin/CheckLoginContainer";
 
 export const routes = [
   {
@@ -45,7 +47,7 @@ export const routes = [
   {
     id: "checkout",
     path: "/Ecommerce-StarJewerly/checkout",
-    Element: Register,
+    Element: Checkout,
   },
   {
     id: "oferts",
@@ -59,7 +61,12 @@ export const routes = [
   },
   {
     id: "register",
-    path: "/Ecommerce-StarJewerly/registrarse",
+    path: "/Ecommerce-StarJewerly/register",
     Element: Register,
+  },
+  {
+    id: "checklogin",
+    path: "/Ecommerce-StarJewerly/checklogin",
+    Element: CheckLoginContainer,
   },
 ];

@@ -1,0 +1,24 @@
+/* CheckLoginContainer.css */
+.CheckLoginContainer-container {
+    padding: 40px;
+    text-align: center;
+    font-size: 25px;
+  }
+  
+  .existing-user-button {
+    margin-top: 20px;
+    background-color: #3f51b5;
+    color: #fff;
+  }
+  
+  .links-container {
+    margin-top: 20px;
+  }
+  
+  .linked {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #3f51b5;
+  }
+  
