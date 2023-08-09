@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
 import "./CartContainer.css";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Login from "../login/login";
 
 const CartContainer = () => {
   const { cart, clearCart, deleteById, getTotalPrice } =
     useContext(CartContext);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
 
   let total = getTotalPrice();
 
@@ -23,6 +25,10 @@ const CartContainer = () => {
         Swal.fire("Carrito limpiado exitosamente", "", "success");
       }
     });
+  };
+
+  const toggleLoginPopup = () => {
+    setShowLoginPopup(!showLoginPopup);
   };
 
   return (
@@ -67,6 +73,7 @@ const CartContainer = () => {
             >
               Finalizar compra
             </Link>
+            {showLoginPopup && <Login onClose={toggleLoginPopup} />}
           </div>
         </div>
       ) : (

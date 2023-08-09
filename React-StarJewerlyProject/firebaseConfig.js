@@ -30,14 +30,25 @@ const auth = getAuth(app);
 
 // OnSubmit del formulario de Login
 export const login = async ({ email, password }) => {
-  let res = await signInWithEmailAndPassword(auth, email, password);
-  return res;
+  try {
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    return { success: true, user: res.user };
+  } catch (error) {
+    console.error("Error al iniciar sesión:", error.message);
+    return { success: false, error: error.message };
+  }
 };
 
 // OnSubmit del formulario de registro
 export const register = async ({ email, password }) => {
-  let res = await createUserWithEmailAndPassword(auth, email, password);
-  return res;
+  try {
+    let res = await createUserWithEmailAndPassword(auth, email, password);
+    console.log("respuesta de firebase:", res);
+    return { success: true, user: res.user };
+  } catch (error) {
+    console.error("Error al registrar usuario:", error.message);
+    return { success: false, error: error.message };
+  }
 };
 
 let proveedorGoogle = new GoogleAuthProvider();

@@ -3,10 +3,10 @@ import Register from "../components/page/register/Register";
 import home from "../components/page/home/home";
 import ItemDetail from "../components/page/itemDetail/ItemDetail";
 import ItemListContainer from "../components/page/itemList/ItemListContainer";
-import login from "../components/page/login/login";
 import Profile from "../components/page/profile/Profile";
 import Checkout from "../components/page/checkout/Checkout";
 import CheckLoginContainer from "../components/page/checkLogin/CheckLoginContainer";
+import Login from "../components/page/login/login";
 
 export const routes = [
   {
@@ -22,7 +22,7 @@ export const routes = [
   {
     id: "login",
     path: "/Ecommerce-StarJewerly/login",
-    Element: login,
+    Element: Login,
   },
   {
     id: "store",

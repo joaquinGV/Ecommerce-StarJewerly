@@ -6,8 +6,28 @@ export const UserContext = createContext();
 const UserContextComponent = ({ children }) => {
   const [user, setUser] = useState();
 
-  const loginSession = (email, password) => {
-    setUser(login(email, password));
+  const loginSession = async (email, password) => {
+    try {
+      const response = await login({ email, password });
+      if (response.success) {
+        console.log("Inicio de sesión exitoso");
+        console.log(response.user);
+        setUser({
+          displayName: response.user.displayName,
+          email: response.user.email,
+          phoneNumber: response.user?.phoneNumber,
+          uid: response.user.uid,
+          photoURL: response.user?.photoURL,
+        });
+        // Aquí puedes realizar la redirección a otra página
+      } else {
+        console.log("Inicio de sesión fallido");
+        // Maneja el caso de inicio de sesión fallido
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error.message);
+      // Maneja el error de inicio de sesión aquí
+    }
   };
 
   const loginGoogle = async () => {
@@ -28,9 +48,21 @@ const UserContextComponent = ({ children }) => {
     return user;
   };
 
-  const registerUser = () => {
-    let res = register();
-    console.log("Registro exitoso:", res);
+  const registerUser = async (email, password) => {
+    try {
+      const response = await register({ email, password });
+      if (response.success) {
+        console.log("Registro de sesión exitoso");
+        loginSession(email, password);
+        // Aquí puedes realizar la redirección a otra página
+      } else {
+        console.log("Registro de sesión fallido");
+        // Maneja el caso de Registro de sesión fallido
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error.message);
+      // Maneja el error de Registro de sesión aquí
+    }
   };
 
   const getUserData = () => {

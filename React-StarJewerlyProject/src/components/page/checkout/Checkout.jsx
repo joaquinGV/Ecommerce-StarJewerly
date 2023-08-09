@@ -33,7 +33,7 @@ const CheckoutContainer = () => {
       const order = {
         buyer: {
           name: user.displayName,
-          phone: user.uid,
+          phone: user.phoneNumber,
           email: user.email,
         },
         items: cart,
@@ -67,28 +67,29 @@ const CheckoutContainer = () => {
 
   return (
     <>
-      {user ? (
+      {orderId ? (
         <div className="checkout-container">
           <h1 className="checkout-title">Compra realizada</h1>
           <div className="order-info">
-            {orderId ? (
-              <div>
-                <h3 className="success-message">Gracias por su compra.</h3>
-                <h4>Su número de compra es: {orderId}</h4>
-                <Link to="/Ecommerce-StarJewerly/tienda" className="link-back">
-                  Volver a comprar
-                </Link>
-              </div>
-            ) : (
-              <p className="processing-message">Procesando...</p>
-            )}
+            <div>
+              <h3 className="success-message">Gracias por su compra.</h3>
+              <h4>Su número de compra es: {orderId}</h4>
+              <Link to="/Ecommerce-StarJewerly/tienda" className="link-back">
+                Volver a comprar
+              </Link>
+            </div>
           </div>
         </div>
       ) : (
-        <CheckLoginContainer />
+        <>
+          {cart.length > 0 ? (
+            !user && <CheckLoginContainer />
+          ) : (
+            <p>Nada que mostrar</p>
+          )}
+        </>
       )}
     </>
   );
 };
-
 export default CheckoutContainer;
