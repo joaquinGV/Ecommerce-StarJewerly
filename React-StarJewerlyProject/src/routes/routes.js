@@ -5,7 +5,6 @@ import ItemDetail from "../components/page/itemDetail/ItemDetail";
 import ItemListContainer from "../components/page/itemList/ItemListContainer";
 import Profile from "../components/page/profile/Profile";
 import Checkout from "../components/page/checkout/Checkout";
-import CheckLoginContainer from "../components/page/checkLogin/CheckLoginContainer";
 import Login from "../components/page/login/login";
 
 export const routes = [
@@ -58,15 +57,5 @@ export const routes = [
     id: "profile",
     path: "/Ecommerce-StarJewerly/profile",
     Element: Profile,
-  },
-  {
-    id: "register",
-    path: "/Ecommerce-StarJewerly/register",
-    Element: Register,
-  },
-  {
-    id: "checklogin",
-    path: "/Ecommerce-StarJewerly/checklogin",
-    Element: CheckLoginContainer,
   },
 ];

@@ -9,13 +9,7 @@ import { database, ingresarConGoogle } from "../../../../firebaseConfig";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
-  // const { data } = useFetch("/src/api/db2.json");
   const { categoryName } = useParams();
-
-  const ingresarGoogle = async () => {
-    let res = await ingresarConGoogle();
-    console.log(res);
-  };
 
   useEffect(() => {
     let productsCollection = collection(database, "products");
@@ -40,7 +34,6 @@ const ItemListContainer = () => {
 
   return (
     <>
-      <button onClick={ingresarGoogle}>Google</button>
       <ItemList items={items} />;
     </>
   );

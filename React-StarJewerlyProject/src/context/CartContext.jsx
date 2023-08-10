@@ -10,7 +10,6 @@ const CartContextComponent = ({ children }) => {
 
     if (existe) {
       let newArray = cart.map((elemento) => {
-        // [{1}, {}, {3}]
         if (elemento.id === item.id) {
           return { ...elemento, quantity: item.quantity };
         } else {
@@ -62,6 +61,7 @@ const CartContextComponent = ({ children }) => {
 
   let data = {
     cart,
+    isInCart,
     addToCart,
     clearCart,
     deleteById,

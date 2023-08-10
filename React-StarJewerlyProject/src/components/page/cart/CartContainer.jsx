@@ -1,17 +1,33 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
 import "./CartContainer.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Login from "../login/login";
+import CounterContainer from "../../common/counter/CounterContainer";
+import { InputLabel } from "@mui/material";
 
 const CartContainer = () => {
-  const { cart, clearCart, deleteById, getTotalPrice } =
-    useContext(CartContext);
+  const {
+    cart,
+    addToCart,
+    clearCart,
+    deleteById,
+    getTotalPrice,
+    getQuantityById,
+  } = useContext(CartContext);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
 
   let total = getTotalPrice();
+  const totalQuantity = (id) => {
+    return getQuantityById(id);
+  };
+
+  const onAdd = (elemento, cantidad) => {
+    let productCart = { ...elemento, quantity: cantidad };
+    addToCart(productCart);
+  };
 
   const limpiar = () => {
     Swal.fire({
@@ -31,6 +47,12 @@ const CartContainer = () => {
     setShowLoginPopup(!showLoginPopup);
   };
 
+  const navigate = useNavigate();
+
+  const itemDetails = (id) => {
+    navigate(`/Ecommerce-StarJewerly/item/${id}`);
+  };
+
   return (
     <div>
       {cart.length > 0 ? (
@@ -39,25 +61,53 @@ const CartContainer = () => {
 
           {cart.map((elemento) => (
             <div key={elemento.id} className="cartItem">
-              <img
-                src={elemento.img}
-                alt={elemento.title}
-                className="cartItemImage "
-              />
-              <div className="cartItemDetails">
-                <p className="cartItemTitle">{elemento.title}</p>
-                <p className="cartItemPrice">Precio: $ {elemento.price}</p>
-                <p className="cartItemQuantity">
-                  Cantidad: {elemento.quantity}
-                </p>
+              <div className="itemDetails">
+                <img
+                  src={elemento.img}
+                  alt={elemento.title}
+                  className="cartItemImage"
+                  onClick={() => itemDetails(elemento.id)}
+                />
+                <div className="cartItemDetails">
+                  <h2
+                    className="cartItemTitle"
+                    onClick={() => itemDetails(elemento.id)}
+                  >
+                    {elemento.title}
+                  </h2>
+                  <p className="cartItemPrice">Precio: $ {elemento.price}</p>
+                  <p className="cartItemQuantity">
+                    Cantidad: {elemento.quantity}
+                  </p>
+                </div>
               </div>
-              <button
-                onClick={() => deleteById(elemento.id)}
-                className="cartItemDelete "
-              >
-                <DeleteIcon />
-                Borrar artículo
-              </button>
+              <div className="itemCount">
+                <CounterContainer
+                  stock={elemento.stock}
+                  initial={totalQuantity(elemento.id)}
+                  onAdd={onAdd}
+                  element={elemento}
+                  // onChange={true}
+                />
+                <div>
+                  <p>${elemento.price * elemento.quantity}</p>
+                </div>
+                <button
+                  onClick={() => deleteById(elemento.id)}
+                  className="cartItemDelete"
+                >
+                  <DeleteIcon />
+
+                  <InputLabel
+                    sx={{
+                      display: ["none", "block", "block"],
+                      color: "white",
+                    }}
+                  >
+                    Borrar artículo
+                  </InputLabel>
+                </button>
+              </div>
             </div>
           ))}
           <div className="cartTotal">
@@ -83,6 +133,9 @@ const CartContainer = () => {
             src="https://res.cloudinary.com/dobejqlcu/image/upload/v1691123589/Mooncy/carritoVacio_gktnxr.avif"
             alt="Carrito Vacío"
           />
+          <Link to={"/Ecommerce-StarJewerly/tienda"} className="storeLink">
+            Seguir comprando
+          </Link>
         </div>
       )}
     </div>

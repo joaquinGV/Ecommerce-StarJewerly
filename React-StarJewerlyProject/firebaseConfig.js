@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  updateProfile,
 } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -40,9 +41,20 @@ export const login = async ({ email, password }) => {
 };
 
 // OnSubmit del formulario de registro
-export const register = async ({ email, password }) => {
+export const register = async ({
+  email,
+  password,
+  name = "",
+  phone = "000",
+}) => {
   try {
     let res = await createUserWithEmailAndPassword(auth, email, password);
+
+    // Actualizar el perfil del usuario con nombre y teléfono
+    await updateProfile(auth.currentUser, {
+      displayName: name,
+      phoneNumber: phone,
+    });
     console.log("respuesta de firebase:", res);
     return { success: true, user: res.user };
   } catch (error) {

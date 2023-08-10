@@ -5,6 +5,7 @@ import { useContext } from "react";
 import {} from "../../../context/CartContext";
 import { UserContext } from "../../../context/UserContext"; // Importa el contexto de usuario
 // import GoogleIcon from "@mui/icons-material/Google";
+import CloseIcon from "@mui/icons-material/Close";
 import "./login.css";
 
 const Login = ({ onClose }) => {
@@ -46,9 +47,9 @@ const Login = ({ onClose }) => {
     <div className="popup-overlay" onClick={handleOverlayClick}>
       <div className="popup-content">
         <h2>Iniciar Sesión</h2>
-        {/* Aquí agregarías el formulario de inicio de sesión */}
-        {/* <button onClick={onClose}>Cerrar</button> */}
-
+        <button className="close-button" onClick={onClose}>
+          <CloseIcon />
+        </button>
         <div className="form-container">
           <form className="registration-form" onSubmit={handleSubmit}>
             <TextField
@@ -72,7 +73,7 @@ const Login = ({ onClose }) => {
               value={values.password}
               helperText={touched.password && errors.password}
             />
-            <Button type="submit" variant="contained" sx={{ margin: "10px" }}>
+            <Button type="submit" variant="contained">
               Iniciar Sesion
             </Button>
           </form>

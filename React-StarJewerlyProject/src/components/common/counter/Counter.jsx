@@ -4,7 +4,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-const Counter = ({ contador, sumar, restar, reset, onAdd }) => {
+const Counter = ({ contador, sumar, restar, reset, onAdd, element }) => {
   return (
     <Stack
       sx={{
@@ -30,7 +30,12 @@ const Counter = ({ contador, sumar, restar, reset, onAdd }) => {
         aria-label="small filledTonal button group"
         variant="outlined"
       >
-        <Button onClick={restar} sx={{}}>
+        <Button
+          onClick={() => {
+            restar();
+            element && onAdd(element, contador - 1);
+          }}
+        >
           <RemoveIcon />
         </Button>
         <Input
@@ -46,27 +51,36 @@ const Counter = ({ contador, sumar, restar, reset, onAdd }) => {
             paddingLeft: "20px",
           }}
         />
-        <Button onClick={sumar}>
+        <Button
+          onClick={() => {
+            sumar();
+            element && onAdd(element, contador + 1);
+          }}
+        >
           <AddIcon />
         </Button>
-        <Button onClick={reset}>
-          <RestartAltIcon />
-        </Button>
+        {!element && (
+          <Button onClick={reset}>
+            <RestartAltIcon />
+          </Button>
+        )}
       </ButtonGroup>
 
-      <Button
-        onClick={() => onAdd(contador)}
-        variant="contained"
-        color="primary"
-        startIcon={<AddShoppingCartIcon />}
-        style={{
-          textTransform: "none",
-          fontWeight: "bold",
-          borderRadius: "5px",
-        }}
-      >
-        Agregar al carrito
-      </Button>
+      {!element && (
+        <Button
+          onClick={() => onAdd(contador)}
+          variant="contained"
+          color="primary"
+          startIcon={<AddShoppingCartIcon />}
+          style={{
+            textTransform: "none",
+            fontWeight: "bold",
+            borderRadius: "5px",
+          }}
+        >
+          Agregar al carrito
+        </Button>
+      )}
     </Stack>
   );
 };

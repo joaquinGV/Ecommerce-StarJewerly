@@ -1,23 +1,50 @@
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
   CardMedia,
   Typography,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../../context/CartContext";
+import "./ProductCard.css"; // Importa el archivo CSS
 
-const ProductCard = ({ elemento, isInItemList = true }) => {
+const ProductCard = ({ elemento }) => {
+  const { addToCart, isInCart, deleteById } = useContext(CartContext);
+  const addOne = () => {
+    let productCart = { ...elemento, quantity: 1 };
+    addToCart(productCart);
+  };
+  const deleteOne = (id) => {
+    deleteById(id);
+  };
+
+  const inCart = (id) => {
+    const exist = isInCart(id);
+    return exist;
+  };
+
+  const navigate = useNavigate();
+
+  const itemDetails = (id) => {
+    navigate(`/Ecommerce-StarJewerly/item/${id}`);
+  };
+
   return (
-    <Card sx={{ width: 345 }}>
+    <Card sx={{ width: 345 }} className="card">
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt="product name"
         height="140"
         image={elemento.img}
+        onClick={() => itemDetails(elemento.id)}
+        className="cardMedia"
       />
-      <CardContent>
+      <CardContent
+        onClick={() => itemDetails(elemento.id)}
+        className="cardContent"
+      >
         <Typography gutterBottom variant="h5" component="div">
           {elemento.title}
         </Typography>
@@ -25,13 +52,24 @@ const ProductCard = ({ elemento, isInItemList = true }) => {
           {elemento.description}
         </Typography>
       </CardContent>
-      <CardActions>
-        {isInItemList ? (
-          <Link to={`/Ecommerce-StarJewerly/item/${elemento.id}`}>
-            <Button size="small">Ver detalle</Button>
-          </Link>
+      <CardActions className="cardActions">
+        <h4 className="priceTag">Precio: {elemento.price} mxn</h4>
+        {elemento.stock > 0 ? (
+          !inCart(elemento.id) ? (
+            <button className="addButton" size="small" onClick={addOne}>
+              Añadir al carrito
+            </button>
+          ) : (
+            <button
+              className="removeButton"
+              size="small"
+              onClick={() => deleteOne(elemento.id)}
+            >
+              Eliminar del carrito
+            </button>
+          )
         ) : (
-          <Button size="small">Eliminar del carrito</Button>
+          <h3 className="OutOffStock"> No hay Stock</h3>
         )}
       </CardActions>
     </Card>

@@ -48,9 +48,9 @@ const UserContextComponent = ({ children }) => {
     return user;
   };
 
-  const registerUser = async (email, password) => {
+  const registerUser = async (email, password, name, phone) => {
     try {
-      const response = await register({ email, password });
+      const response = await register({ email, password, name, phone });
       if (response.success) {
         console.log("Registro de sesión exitoso");
         loginSession(email, password);
@@ -67,8 +67,14 @@ const UserContextComponent = ({ children }) => {
 
   const getUserData = () => {
     // console.log(user);
-    console.log("email:", user.email);
-    console.log("Nombre:", user.displayName);
+    console.log(
+      "email:",
+      user.email,
+      "\nNombre:",
+      user.displayName,
+      "\nphone:",
+      user.phoneNumber
+    );
     // console.log("UUID:", user.uid);
   };
 

@@ -6,9 +6,8 @@ const ItemList = ({ items }) => {
   let arr = [1, 2, 3, 4];
 
   return (
-    <div>
+    <div style={{ minHeight: "70vh", margin: "15px" }}>
       <SelectCategory data={[]} />
-
       <div
         style={{
           width: "100%",
@@ -17,6 +16,7 @@ const ItemList = ({ items }) => {
           flexWrap: "wrap",
           // paddingBottom: "15px",
           rowGap: "15px",
+          marginTop: "10px",
         }}
       >
         {items.length > 0

@@ -4,8 +4,8 @@ import * as Yup from "yup";
 import { useContext } from "react";
 import {} from "../../../context/CartContext";
 import { UserContext } from "../../../context/UserContext"; // Importa el contexto de usuario
-import "./Register.css"; // Importa los estilos
-// import GoogleIcon from "@mui/icons-material/Google";
+import "./Register.css";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Register = ({ onClose, login }) => {
   const { registerUser } = useContext(UserContext); // Importa la función loginGoogle
@@ -32,7 +32,7 @@ const Register = ({ onClose, login }) => {
       },
       onSubmit: (data) => {
         console.log(data);
-        registerUser(data.email, data.password);
+        registerUser(data.email, data.password, data.name, data.phone);
       },
       validationSchema: Yup.object({
         name: Yup.string()
@@ -60,6 +60,10 @@ const Register = ({ onClose, login }) => {
   return (
     <div className="popup-overlay" onClick={handleOverlayClick}>
       <div className="popup-content">
+        <button className="close-button" onClick={onClose}>
+          <CloseIcon />
+        </button>
+        <h2>Registrarse</h2>
         <div className="form-container">
           <form className="registration-form" onSubmit={handleSubmit}>
             <TextField
@@ -119,17 +123,6 @@ const Register = ({ onClose, login }) => {
               Registrarse
             </Button>
           </form>
-
-          {/* <div className="google-login">
-        <Button
-          onClick={loginGoogle}
-          variant="contained"
-          className="google-button"
-        >
-          <GoogleIcon />
-          Iniciar sesión con Google
-        </Button>
-      </div> */}
           <p>
             ¿Ya tienes una cuenta? &nbsp;
             <button onClick={handleLoginButtonClick}>Iniciar sesión</button>
