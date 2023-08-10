@@ -33,7 +33,7 @@ const MenuNav = ({ theme }) => {
         edge="start"
         color="inherit"
         aria-label="open drawer"
-        sx={{ mr: 2 }}
+        sx={{ mr: { xs: 1, sm: 2 } }}
       >
         <MenuIcon />
       </IconButton>
