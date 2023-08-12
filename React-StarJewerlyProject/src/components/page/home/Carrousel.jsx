@@ -1,12 +1,18 @@
 import "./home.css";
 
-const MyComponent = () => {
+const Carrousel = () => {
   return (
-    <div style={{ width: "100%" }}>
+    <div
+      style={{
+        width: "100%",
+      }}
+    >
       <div
         id="carouselExampleAutoplaying"
         className="carousel slide"
         data-bs-ride="carousel"
+        style={{
+        }}
       >
         <div className="carousel-inner">
           <div className="carousel-item active">
@@ -65,4 +71,4 @@ const MyComponent = () => {
   );
 };
 
-export default MyComponent;
+export default Carrousel;

@@ -1,0 +1,35 @@
+/* PaymentMethods.css */
+.payment-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .payment-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .payment-item {
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+  }
+  
+  .icon-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 2px solid black;
+  }
+  
+  .method-name {
+    font-size: 16px;
+  }
+  
