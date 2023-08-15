@@ -69,13 +69,13 @@ const CartContainer = () => {
                   onClick={() => itemDetails(elemento.id)}
                 />
                 <div className="cartItemDetails">
-                  <h2
+                  <h4
                     className="cartItemTitle"
                     onClick={() => itemDetails(elemento.id)}
                   >
                     {elemento.title}
-                  </h2>
-                  <p className="cartItemPrice">Precio: $ {elemento.price}</p>
+                  </h4>
+                  <p className="cartItemPrice">Precio por unidad: $ {elemento.price}</p>
                   <p className="cartItemQuantity">
                     Cantidad: {elemento.quantity}
                   </p>

@@ -1,124 +1,146 @@
+.boxesTitle{
+  text-align: center;
+  margin-top: 10px;
+}
+
 .boxesContainer{
-    height: 300px;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 10px; /* Agrega espaciado si lo deseas */
-    text-align: center;
-    color: #fff;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 10px; 
+  text-align: center;
+  justify-content: center;
+  color: #333;
+  font-family: Arial, Helvetica, serif;
+  background: white;
+}
+
+.boxesContainer .cardBox{
+  float: left;
+  font-size: 1.2em;
+  margin: 1% 0 0 1%;
+  transition: all 0.3s ease 0s;
+  width: 23.7%;
+}
+
+.boxesContainer .cardBox:hover .card {
+  transform: rotateY( 180deg);
+}
+
+.boxesContainer .card {
+  background: url(https://res.cloudinary.com/dobejqlcu/image/upload/v1692118200/Mooncy/fondoCard_o65law.avif);
+  cursor: default;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease 0s;
+  width: 100%;
+  -webkit-animation: giro 1s 1;
+  animation: giro 1s 1;
+}
+
+.boxesContainer .card p {
+  padding-top:3px ;
+  margin-bottom: 1.8em;
+}
+
+.boxesContainer .card .front,
+.boxesContainer .card .back {
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  color: white;
+  display: block;
+  font-size: 1.2em;
+  height: 100%;
+  padding: 0.8em;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }
 
 .front img{
-    width: 100%;
+  width: 100%;
+  height: 90%;
+  border-radius: 5%;
 }
 
-.cardBox {
-    float: left;
-    font-size: 1.2em;
-    margin: 1% 0 0 1%;
-    /* perspective: 800px; */
-    transition: all 0.3s ease 0s;
-    width: 33%;
-  }
-  
-  .cardBox:hover .card {
+.card .back {
+  transform: rotateY( 180deg);
+  overflow-y: auto;
+}
+
+.card .back p {
+  padding: 0.3em 0.5em;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 1px;
+  font-size: 0.9em;
+  transition: all 0.2s ease 0s;
+}
+
+.card .back a:hover {
+  background: #fff;
+  color: #333;
+  text-shadow: 0 0 1px #333;
+}
+
+.cardBox:nth-child(1) .card  {
+  background: url(https://res.cloudinary.com/dobejqlcu/image/upload/v1692118200/Mooncy/fondoCard_o65law.avif);;
+}
+
+.cardBox:nth-child(2) .card  {
+  background: url(https://res.cloudinary.com/dobejqlcu/image/upload/v1692119266/Mooncy/fondo2transformed_iv8j7d.jpg) ;
+}
+
+.cardBox:nth-child(3) .card  {
+  background: url(https://res.cloudinary.com/dobejqlcu/image/upload/v1692119265/Mooncy/fondo3_rcwvuw.avif);
+}
+
+.cardBox:nth-child(4) .card  {
+  background: url(https://res.cloudinary.com/dobejqlcu/image/upload/v1692119266/Mooncy/fondo4-transformed_eux7ka.jpg);
+}
+
+@-webkit-keyframes giro {
+  from {
     transform: rotateY( 180deg);
   }
-  
+  to {
+    transform: rotateY( 0deg);
+  }
+}
+
+@keyframes giro {
+  from {
+    transform: rotateY( 180deg);
+  }
+  to {
+    transform: rotateY( 0deg);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .boxesContainer{
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .boxesContainer .cardBox {
+    margin: 3%;
+
+    width: 100%;
+  }
   .card {
-    background: #222;
-    cursor: default;
-    height: 300px;
-    transform-style: preserve-3d;
-    transition: transform 0.4s ease 0s;
-    width: 100%;
-    -webkit-animation: giro 1s 1;
-    animation: giro 1s 1;
+    height: 285px;
   }
-  
-  .card p {
-    margin-bottom: 1.5em;
+  .cardBox:last-child {
+    margin-bottom: 3%;
   }
-  
-  .card .front,
-  .card .back {
-    backface-visibility: hidden;
-    box-sizing: border-box;
-    display: block;
-    font-size: 1em;
-    height: 100%;
-    padding: 5px;
-    position: absolute;
-    text-align: center;
-    width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .cardBox {
+    width: 94.5%;
   }
-  
-  .card .front strong {
-    background: #fff;
-    border-radius: 100%;
-    color: #222;
-    font-size: 1.5em;
-    line-height: 30px;
-    padding: 0 7px 4px 6px;
+  .card {
+    height: 260px;
   }
-  
-  .card .back {
-    transform: rotateY( 180deg);
-  }
-  
-  .card .back a {
-    padding: 0.3em 0.5em;
-    background: #333;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 1px;
-    font-size: 0.9em;
-    transition: all 0.2s ease 0s;
-  }
-  
-  .card .back a:hover {
-    background: #fff;
-    color: #333;
-    text-shadow: 0 0 1px #333;
-  }
-  
-  @-webkit-keyframes giro {
-    from {
-      transform: rotateY( 180deg);
-    }
-    to {
-      transform: rotateY( 0deg);
-    }
-  }
-  
-  @keyframes giro {
-    from {
-      transform: rotateY( 180deg);
-    }
-    to {
-      transform: rotateY( 0deg);
-    }
-  }
-  
-  @media screen and (max-width: 767px) {
-    .cardBox {
-      margin-left: 2.8%;
-      margin-top: 3%;
-      width: 46%;
-    }
-    .card {
-      height: 285px;
-    }
-    .cardBox:last-child {
-      margin-bottom: 3%;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .cardBox {
-      width: 94.5%;
-    }
-    .card {
-      height: 260px;
-    }
-  }
+}

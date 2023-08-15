@@ -44,7 +44,7 @@ const ItemDetail = () => {
             <Box
               sx={{
                 "& > legend": { mt: 2 },
-                marginBottom: "5px"
+                marginBottom: "5px",
               }}
             >
               <Rating
@@ -69,11 +69,15 @@ const ItemDetail = () => {
           <p>
             <b>Categoria:</b> {producto.category}
           </p>
-          <CounterContainer
-            stock={producto.stock}
-            onAdd={onAdd}
-            initial={totalQuantity}
-          />
+          {producto.stock > 0 ? (
+            <CounterContainer
+              stock={producto.stock}
+              onAdd={onAdd}
+              initial={totalQuantity}
+            />
+          ) : (
+            <h3>No hay Stock</h3>
+          )}
         </div>
       </div>
     </div>

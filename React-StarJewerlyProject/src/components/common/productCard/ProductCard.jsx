@@ -53,7 +53,7 @@ const ProductCard = ({ elemento }) => {
         </Typography>
       </CardContent>
       <CardActions className="cardActions">
-        <h4 className="priceTag">Precio: {elemento.price} mxn</h4>
+        <h4 className="priceTag"> {elemento.price} mxn</h4>
         {elemento.stock > 0 ? (
           !inCart(elemento.id) ? (
             <button className="addButton" size="small" onClick={addOne}>

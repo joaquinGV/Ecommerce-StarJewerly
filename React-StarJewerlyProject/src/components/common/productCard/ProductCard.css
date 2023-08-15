@@ -40,7 +40,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
+    margin-left: auto;}
   
   .removeButton {
     background: linear-gradient(to bottom, #FF4500, #FF6347);

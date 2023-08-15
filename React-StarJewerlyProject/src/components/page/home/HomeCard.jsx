@@ -6,10 +6,10 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { database } from "../../../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 
-const HomeCard = () => {
+const HomeCard = ({ categoryName, Title }) => {
   const [items, setItems] = useState([]);
   let arr = [1, 2, 3, 4];
-  let categoryName = "lights";
+  // let categoryName = "lights";
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const HomeCard = () => {
         return { ...doc.data(), id: doc.id };
       });
 
-      setItems(productos);
+      setItems(productos.slice(0, 5));
     });
   }, [categoryName]);
 
@@ -38,57 +38,60 @@ const HomeCard = () => {
   };
 
   return (
-    <div className="boxesContainer">
-      {items.length > 0
-        ? items.map((elemento) => {
-            return (
-              <div
-                className="cardBox"
-                key={elemento.id}
-                onClick={() => itemDetails(elemento.id)}
-              >
-                <div className="card">
-                  <div className="front">
-                    <img
-                      src={elemento.img}
-                      alt={elemento.name}
-                      className="product-image"
-                    />
-                    <p className="product-price">${elemento.price}</p>
-                  </div>
-                  <div className="back">
-                    <h3 className="product-name">{elemento.name}</h3>
-                    <p className="product-description">
-                      {elemento.description}
-                    </p>
+    <>
+      <h3 className="boxesTitle">Relacionado con {Title}</h3>
+      <div className="boxesContainer">
+        {items.length > 0
+          ? items.map((elemento) => {
+              return (
+                <div
+                  className="cardBox"
+                  key={elemento.id}
+                  onClick={() => itemDetails(elemento.id)}
+                >
+                  <div className="card">
+                    <div className="front">
+                      <img
+                        src={elemento.img}
+                        alt={elemento.name}
+                        className="product-image"
+                      />
+                      <p className="product-price">${elemento.price}</p>
+                    </div>
+                    <div className="back">
+                      <h3 className="product-name">{elemento.name}</h3>
+                      <p className="product-description">
+                        {elemento.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })
-        : arr.map((e) => {
-            return (
-              <div key={e}>
-                <Skeleton variant="rounded" width={290} height={90} />
-                <Skeleton
-                  variant="text"
-                  sx={{ fontSize: "1.6rem" }}
-                  width={160}
-                />
-                <Skeleton
-                  variant="text"
-                  sx={{ fontSize: "1rem" }}
-                  width={290}
-                />
-                <Skeleton
-                  variant="rounded"
-                  sx={{ fontSize: "1rem", marginTop: "10px" }}
-                  width={80}
-                />
-              </div>
-            );
-          })}
-    </div>
+              );
+            })
+          : arr.map((e) => {
+              return (
+                <div key={e}>
+                  <Skeleton variant="rounded" width={290} height={90} />
+                  <Skeleton
+                    variant="text"
+                    sx={{ fontSize: "1.6rem" }}
+                    width={160}
+                  />
+                  <Skeleton
+                    variant="text"
+                    sx={{ fontSize: "1rem" }}
+                    width={290}
+                  />
+                  <Skeleton
+                    variant="rounded"
+                    sx={{ fontSize: "1rem", marginTop: "10px" }}
+                    width={80}
+                  />
+                </div>
+              );
+            })}
+      </div>
+    </>
   );
 };
 

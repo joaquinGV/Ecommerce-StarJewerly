@@ -5,7 +5,7 @@ import PaymentMethods from "./PaymentMethods";
 const Home = () => {
   return (
     <div>
-      <header>
+      <header style={{ textAlign: "center" }}>
         <h1>Construye el cuarto de tus sueños</h1>
       </header>
 
@@ -13,7 +13,8 @@ const Home = () => {
         {/* Carrusel de imágenes */}
         <Carrousel />
         <PaymentMethods />
-        <HomeCard />
+        <HomeCard categoryName={"lights"} Title={"Luces"} />
+        <HomeCard categoryName={"decoration"} Title={"Decoracion"} />
       </div>
       {/* Pie de página */}
       <footer>{/* Contenido del pie de página */}</footer>

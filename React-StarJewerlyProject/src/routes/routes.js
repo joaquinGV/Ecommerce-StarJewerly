@@ -1,5 +1,4 @@
 import CartContainer from "../components/page/cart/CartContainer";
-import Register from "../components/page/register/Register";
 import home from "../components/page/home/home";
 import ItemDetail from "../components/page/itemDetail/ItemDetail";
 import ItemListContainer from "../components/page/itemList/ItemListContainer";
@@ -49,9 +48,9 @@ export const routes = [
     Element: Checkout,
   },
   {
-    id: "oferts",
-    path: "/Ecommerce-StarJewerly/ofertas",
-    Element: Register,
+    // id: "oferts",
+    // path: "/Ecommerce-StarJewerly/ofertas",
+    // Element: Register,
   },
   {
     id: "profile",
