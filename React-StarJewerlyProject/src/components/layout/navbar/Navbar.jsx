@@ -83,7 +83,7 @@ const Navbar = () => {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={() => handleMenuClose("profile")}>Profile</MenuItem>
-      <MenuItem onClick={() => handleMenuClose("account")}>My account</MenuItem>
+      {/* <MenuItem onClick={() => handleMenuClose("account")}>My account</MenuItem> */}
     </Menu>
   );
 

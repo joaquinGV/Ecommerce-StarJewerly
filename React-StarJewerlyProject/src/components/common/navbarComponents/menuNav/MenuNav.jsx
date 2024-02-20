@@ -50,11 +50,11 @@ const MenuNav = ({ theme }) => {
       >
         <MenuItem onClick={() => handleClose("/")}>Inicio</MenuItem>
         <MenuItem onClick={() => handleClose("/tienda")}>Tienda</MenuItem>
-        <MenuItem onClick={() => handleClose("/ofertas")}>Ofertas</MenuItem>
+        {/* <MenuItem onClick={() => handleClose("/ofertas")}>Ofertas</MenuItem>
         <MenuItem onClick={() => handleClose("/habitaciones")}>
           Habitaciones
         </MenuItem>
-        <MenuItem onClick={() => handleClose("/help")}>Ayuda</MenuItem>
+        <MenuItem onClick={() => handleClose("/help")}>Ayuda</MenuItem> */}
         {userRol === "admin" && (
           <MenuItem onClick={() => handleClose("/dashboard")}>
             Dashboard
